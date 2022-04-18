@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron" id = 'r1'>
+    <h1>Sign Up</h1>
+    <form id = "reg-form">
+      <label for="fname">Username:</label><br>
+      <input type="text" id="username" name="username" placeholder="username"><br>
+      <label for="lname">Password:</label><br>
+      <input type="password" id="password" name="password" placeholder="password"><br>
+      <label for="lname">Re-Enter Password:</label><br>
+      <input type="password" id="rpassword" name="rpassword" placeholder="re-enter password"><br><br>
+      <input type="submit" value="Sign Up">
+    </form> 
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+<script>
+  const form = document.getElementById('reg-form');
+  form.addEventListener('submit', reg);
+  async function reg(event){
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rpassword = document.getElementById('rpassword').value;
+    if (password == rpassword){
+      const result= await fetch('/registeruser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          rpassword
+        })
+      }).then((res) => res.json());
+
+      if(result['username'] == username){
+        window.location.href = "/";
+      }
+    } else {
+      alert('passwords do not match')
+      console.log(112);
+    }
+  }
+</script>
+
+</body>
+</html>

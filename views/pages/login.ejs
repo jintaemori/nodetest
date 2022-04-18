@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+  <%- include('../partials/header'); %>
+</header>
+
+<main>
+  <div class="jumbotron">
+    <h1>Login</h1>
+    <form action="-" id = 'login-form'>
+      <label for="fname">Username:</label><br>
+      <input type="text" id="username" name="username" placeholder="username"><br>
+      <label for="lname">Password:</label><br>
+      <input type="password" id="password" name="password" placeholder="password"><br><br>
+      <input type="submit" value="Login">
+    </form> 
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+
+<script>
+  const form = document.getElementById('login-form');
+  form.addEventListener('submit', reg);
+  async function reg(event){
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const result = await fetch('/loginuser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      })
+    }).then((res) => res.json())
+    if(result !== 'undefined'){
+      console.log(result);
+      window.location.href = result['url'];
+    }
+  }
+</script>
+
+</body>
+</html>

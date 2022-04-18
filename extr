@@ -1,0 +1,71 @@
+// const url = 'mongodb://localhost:27017';
+// const client = new MongoClient(url);
+
+// const dbName = 'users';
+
+// async function main() {
+
+//   await client.connect();
+//   console.log('Connected successfully to server');
+//   const db = client.db(dbName);
+//   const collection = db.collection('users');
+
+//   const insertResult = await collection.insertOne({ username: '1', password: '2', status: false });
+//   console.log('Inserted documents =>', insertResult);
+
+//   return 'done.';
+// }
+// main();
+
+// main()
+//   .then(console.log)
+//   .catch(console.error)
+//   .finally(() => client.close());
+
+// app.post('/reg1', async (req, res) => {
+//   const a = req.body;
+//   console.log(a.username);
+//   res.json({ status: 'ok' });
+// })
+
+
+
+// app.post('/registeruser', async (req, res) => {
+//   const a = req.body;
+//   const dbConnect = dbo.getDb();
+//   const user = {
+//     username: a.username,
+//     password: a.password,
+//     status: false
+//   };
+//   dbConnect
+//     .collection("users")
+//     .insertOne(user, function (err, result) {
+//       if (err) {
+//         res.status(400).send("Error creating user!");
+//       } else {
+//         console.log(`Added a new match with id ${result.insertedId}`);
+//         res.json(200);
+//       }
+//     });
+// })
+// ONLY USING MONGODB
+
+// app.get('/ind1', auth, (req, res) => {
+//     res.render('pages/homepage');
+    // const dbConnect = dbo.getDb();
+    // dbConnect
+    //   .collection("users")
+    //   .find({}).limit(50)
+    //   .toArray(function (err, result) {
+    //     if (err) {
+    //       res.status(400).send("Error fetching listings!");
+    //    } else {
+    //       console.log(result);
+    //     }
+    //   });
+//   });
+
+// app.post("/profilei", upload.single('img'), async (req, res) => {
+//   console.log(req.file.path);
+// });

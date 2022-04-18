@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chess</title>
+    <link rel="stylesheet" href="css/chessboard-1.0.0.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/chessboard-1.0.0.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body class="container">
+
+<header>
+</header>
+
+<main>
+    <div id="board1" style="width: 400px"></div>
+    <form id = "send">
+        <input type="text" name="username" id = "username"></input>
+        <input type="submit" value="Submit"></input>
+    </form>
+    <div id="rec"></div>
+</main>
+
+<footer>
+</footer>
+
+<script>
+    var board1 = ChessBoard('board1', 'start');
+    const form = document.getElementById('send');
+    form.addEventListener('submit', reg);
+    async function reg(event){
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+
+        const result = await fetch('/send', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username,
+        })
+        }).then((res) => res.json())
+        if(result !== 'undefined'){
+        console.log(result);
+        // window.location.href = result['url'];
+        }
+    }
+</script>
+
+</body>
+</html>

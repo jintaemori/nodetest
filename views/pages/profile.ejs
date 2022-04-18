@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+
+<main>
+  <div class="jumbotron" id = 'r1'>
+    <h1>Profile</h1>
+    <img id = 'pfp' src="https://trialbucket112.s3.amazonaws.com/abc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ2QNCYMMDWISQUNY%2F20220410%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220410T035400Z&X-Amz-Expires=900&X-Amz-Signature=8c70c5b1647c25823566c19aa966d6d572ccb7fa6c54df774da1b4c2cf920da9&X-Amz-SignedHeaders=host" max-width= 10% height=auto> <br/><br/>
+    <form id = "prof-form" action="/test" method="post" enctype="multipart/form-data">
+      <input type="file" id = "img" name = "img"/><br/><br/>
+      <h4>username:</h4>
+      <input name="username" placeholder=<%= username %>> <br/>
+      <input type="submit" value="Change">
+    </form> 
+  </div>
+</main>
+
+<footer>
+  <%- include('../partials/footer'); %>
+</footer>
+<script>
+  // document.getElementById("pfp").src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png";
+  // document.getElementById("pfp").style.maxWidth= "30vh";
+  // document.getElementById("pfp").style.height="auto";
+</script>
+</body>
+</html>
